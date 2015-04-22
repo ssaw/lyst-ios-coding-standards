@@ -16,10 +16,10 @@ As Uncle Bob says:
 ### Attribution and header info
 Your file headers should contain useful information only. The file already has a name, as does the class, and your (clean, well named, hint hint) code documents itself.
 
-//
-//  Created by YOURNAME on CREATIONDATE.
-//  Copyright (c) 2012-2015 Lyst. All rights reserved.
-//
+	//
+	//  Created by YOURNAME on CREATIONDATE.
+	//  Copyright (c) 2012-2015 Lyst. All rights reserved.
+	//
 
 ### Pull Requests
 “Pull request diffs must be 500 lines or less. No large diffs are allowed.” - Square Register
@@ -40,51 +40,51 @@ Branches should reference their JIRA task ID and a summary of what they are abou
 ### Categories
 Category files must be named in this way
 
-ClassName+CategoryName.h / ClassName+CategoryName.m
+	ClassName+CategoryName.h / ClassName+CategoryName.m
 
 Categories must group like functionality. Use new categories for new functionality.
 
-NSString+ReverseString
-NSString+Base64
+	NSString+ReverseString
+	NSString+Base64
 
 ### Braces
 No conditionals shall be coded without braces (in order to prepare for Swift). 
 
-if (conditional) {single.line.statement;}
+	if (conditional) {single.line.statement;}
 
-if (conditional) {
-	multiple;
-	line;
-	statement;
-}
+	if (conditional) {
+		multiple;
+		line;
+		statement;
+	}
 
 ### dot.notation
 We favour dot notation for properties, over square brackets, in order to prepare for Swift.
 
-myObject.sizeProperty;
+	myObject.sizeProperty;
 
-### [dot.notation withMethods]
+### \[dot.notation withMethods\]
 We favour dot notation for single property access before calling a methods on that property, over square brackets, in order to prepare for Swift.
 
-[myObject.sizeProperty methodName]
+	[myObject.sizeProperty methodName]
 
 ### Chaining
 We try to avoid chaining multiple methods or properties together. This makes code hard to comprehend and impossible to debug without changing the code first.
 
 This is not good practice
 
-myObject.frame.size.width; 	// we have no idea what size is now
+	myObject.frame.size.width; 	// we have no idea what size is now
 
 This is good practice
 
-CGRect frame = myObject.frame;
-CGSize frameSize = frame.size.
-frameSize.width;
+	CGRect frame = myObject.frame;
+	CGSize frameSize = frame.size.
+	frameSize.width;
 
 ### \#define constant values
 \#defines for constant values should be replaced by the (type checker friendly) 
 
-const type name = value;
+	const type name = value;
 
 ### Macros
 Where possible, macros should be avoided in favour of functions.  
@@ -103,10 +103,10 @@ This not only gives you better type safety at compile time, but can avoid some n
 
 Favour initialisers for classes expressed as class methods. For example:
 
-+(instancetype)classFactory
-{
-    return [[self alloc] init];
-}
+	+(instancetype)classFactory
+	{
+ 		return [[self alloc] init];
+	}
 
 Caveat: beware of calling allow with the specific class name (.e.g [MyClass alloc] init]). Doing so means, then we won’t be able to create subclasses.
 
@@ -118,11 +118,11 @@ Use our round64Helper, floor64Helper or ceil64Helper on pixel calculations.
 ### Self Retain Cycles
 To avoid self retain cycles, create a weak self outside the block: 
 
-__weak typeof(self) weakSelf = self;
+	__weak typeof(self) weakSelf = self;
 
 And then transform it to a strong one inside of the block:
 
-__strong typeof(self) strongSelf = weakSelf;
+	__strong typeof(self) strongSelf = weakSelf;
 
 then use strongSelf.whatever in your block. Not using a strong reference will cause a compiler error.
 
@@ -131,27 +131,27 @@ In order to prepare for our migration to Swift, all future conditionals using th
 
 This will not pass PR anymore:
 
-NSObject *object = [some thing];
-if(!object) { // }
+	NSObject *object = [some thing];
+	if(!object) { // }
 
 This will 
 
-BOOL success = [some thing];
-if(!success) { // }
+	BOOL success = [some thing];
+	if(!success) { // }
 
 As will this
 
-BOOL success = [some thing];
-if(success == NO) { // }
+	BOOL success = [some thing];
+	if(success == NO) { // }
 
 ### Literals
 We will favour the modern literal syntax (even though it’s just syntactic sugar) 
 
-NSString *str = @”Hello”;
-NSNumber *num = @1;
-NSNumber *enumNum = @(LYNum);
+	NSString *str = @”Hello”;
+	NSNumber *num = @1;
+	NSNumber *enumNum = @(LYNum);
 
-NSObject *object = myDictionary[“MyKey”]
+	NSObject *object = myDictionary[“MyKey”]
 
 We favour this because it produces cleaner, more expressive, code.
 
@@ -168,16 +168,17 @@ This improves clarity of intent, and allows the compiler to perform more checks 
 ### Readonly properties by default
 All properties should be readonly until they cannot be (for easier testing and less brittle code)
 
-@property (nonatomic, copy, readonly) NSString *name;
+	@property (nonatomic, copy, readonly) NSString *name;
 
 ### Nonatomic properties by default
 All properties should be nonatomic until they cannot be (for speed)
 
-@property (nonatomic, copy, readonly) NSString *name;
+	@property (nonatomic, copy, readonly) NSString *name;
 
 ### Copy properties for mutable types
 All NSString, NSDictionary and NSArray properties should be copy, not strong (to prevent being handed an NSMutable version which could then change)
-@property (nonatomic, copy, readonly) NSString *name;
+
+	@property (nonatomic, copy, readonly) NSString *name;
 
 ### When is is not good to use properties
 When they cause side effects, as Clang will warn you…
@@ -187,14 +188,14 @@ When they cause side effects, as Clang will warn you…
 ### Writing Tests
 Each test method should match this pattern
 
-`-(void)testThat…
-`{
-`	// given
-`
-`	// when
-`
-`	// then
-`}
+	-(void)testThat…
+	{
+	// given
+
+	// when
+
+	// then
+	}
 
 Then should have at most one assert since the whole method should be for a single test. Multiple asserts make it hard to discern the true nature of the test or it’s failures. 
 
