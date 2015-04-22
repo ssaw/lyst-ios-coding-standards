@@ -81,8 +81,8 @@ CGRect frame = myObject.frame;
 CGSize frameSize = frame.size.
 frameSize.width;
 
-### #define constant values
-#defines for constant values should be replaced by the (type checker friendly) 
+### \#define constant values
+\#defines for constant values should be replaced by the (type checker friendly) 
 
 const type name = value;
 
