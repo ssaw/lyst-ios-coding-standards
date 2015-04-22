@@ -182,19 +182,19 @@ All NSString, NSDictionary and NSArray properties should be copy, not strong (to
 ### When is is not good to use properties
 When they cause side effects, as Clang will warn you…
 
-“Property access result unused - getters should not be used for side effects”
+	“Property access result unused - getters should not be used for side effects”
 
 ### Writing Tests
 Each test method should match this pattern
 
--(void)testThat…
-{
-	// given
-
-	// when
-
-	// then
-}
+`-(void)testThat…
+`{
+`	// given
+`
+`	// when
+`
+`	// then
+`}
 
 Then should have at most one assert since the whole method should be for a single test. Multiple asserts make it hard to discern the true nature of the test or it’s failures. 
 
