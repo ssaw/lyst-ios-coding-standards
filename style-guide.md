@@ -108,7 +108,7 @@ Favour initialisers for classes expressed as class methods. For example:
  		return [[self alloc] init];
 	}
 
-Caveat: beware of calling allow with the specific class name (.e.g [MyClass alloc] init]). Doing so means, then we won’t be able to create subclasses.
+Caveat: beware of calling alloc with the specific class name (.e.g [MyClass alloc] init]). Doing so means, then we won’t be able to create subclasses.
 
 ### Avoiding Half Pixel Calculations
 Round all calculations that have to do with UI layout. There are some exceptions to this (such as rendering a 2 pixel line, either side of a half pixel) but as a general rule, rounded CGFloats avoid fuzziness.
@@ -180,7 +180,7 @@ All NSString, NSDictionary and NSArray properties should be copy, not strong (to
 
 	@property (nonatomic, copy, readonly) NSString *name;
 
-### When is is not good to use properties
+### When it is not good to use properties
 When they cause side effects, as Clang will warn you…
 
 	“Property access result unused - getters should not be used for side effects”
