@@ -136,10 +136,15 @@ This will not pass PR anymore:
 
 This will 
 
+	NSObject *object = [some thing];
+	if(object != nil) { // }
+
+As will this
+
 	BOOL success = [some thing];
 	if(!success) { // }
 
-As will this
+And this
 
 	BOOL success = [some thing];
 	if(success == NO) { // }
