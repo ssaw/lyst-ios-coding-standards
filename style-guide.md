@@ -126,6 +126,11 @@ Favour initialisers for classes expressed as class methods. For example:
 
 Caveat: beware of calling alloc with the specific class name (.e.g [MyClass alloc] init]). Doing so means, then we won’t be able to create subclasses.
 
+### `NSDecimalNumber` vs `float`
+As Apple mention in their Apple Pay documentation, floats and doubles are not to be trusted for financial calculations
+
+> Although they may appear to be more convenient, IEEE floating point data types such as float and Double are not suitable for financial calculations. These data types use a base-2 representation of numbers, which means that some decimal numbers can’t be represented exactly—for example, 0.42 must be approximated as 0.41999 repeating. Such approximations can cause financial calculations to return incorrect results. [developer.apple.com/library/ios/ApplePay_Guide/CreateRequest.html](https://developer.apple.com/library/ios/ApplePay_Guide/CreateRequest.html#//apple_ref/doc/uid/TP40014764-CH3-SW2)
+
 ### Avoiding Half Pixel Calculations
 Round all calculations that have to do with UI layout. There are some exceptions to this (such as rendering a 2 pixel line, either side of a half pixel) but as a general rule, rounded CGFloats avoid fuzziness.
 
