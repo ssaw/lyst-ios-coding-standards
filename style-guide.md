@@ -53,7 +53,7 @@ Categories must group like functionality. Use new categories for new functionali
 We favour image catalogs for all new image assets that are added to the project. Not only do they allow grouping of like images, but permit the OS and compiler to perform several optimisations including
 
 * "Xcode compiles your asset catalogs into a runtime binary file format that reduces the download time for your app"
-* With iOS 9, App Thinning includes a technique called Slicing that can automatically the space an app takes up if you use asset catalogs.
+* With iOS 9, App Thinning includes a technique called Slicing that can automatically reduce the space an app takes up if you use asset catalogs.
 
 [developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0](https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/Recipe.html)
 
