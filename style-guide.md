@@ -106,6 +106,12 @@ CGSize frameSize = frame.size.
 frameSize.width;
 ```
 
+This is better - convenience accessors
+```objectivec
+CGRect frame = myObject.frame;
+CGRectGetWidth(frame);
+```
+
 ### `#define` constant values
 `#defines` for constant values should be replaced by the (type checker friendly) 
 
