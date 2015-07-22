@@ -112,6 +112,21 @@ CGRect frame = myObject.frame;
 CGRectGetWidth(frame);
 ```
 
+Similarly, calculated values should be calculated before being returned.
+
+```objectivec
+CGRect frame = myObject.frame;
+CGFloat width = CGRectGetWidth(frame);
+return width;
+```
+
+is better than
+
+```objectivec
+CGRect frame = myObject.frame;
+return CGRectGetWidth(frame);
+```
+
 ### `#define` constant values
 `#defines` for constant values should be replaced by the (type checker friendly) 
 
